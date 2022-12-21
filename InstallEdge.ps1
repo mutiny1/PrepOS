@@ -78,8 +78,8 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-mkdir -Path $env:temp\edgeinstall -Force
-start-process "mkdir" -ArgumentList "$env:windir\Logs\EdgeInstall" -Verb 'RunAs'
+mkdir -Path "$env:temp\edgeinstall" -Force
+mkdir -path "$env:windir\Logs\EdgeInstall" -Force
 $edgeEnterpriseMSIUri = 'https://edgeupdates.microsoft.com/api/products?view=enterprise'
 
 # Validating parameters to reduce user errors
@@ -228,7 +228,7 @@ else {
 Write-Host "-- Script Completed: File Downloaded -- " -ForegroundColor Green
 Write-Output ""
 Write-Output "Waiting for MSEdge installation"
-Start-Process "msiexec.exe" -ArgumentList "/i","$env:temp\edgeinstall\MicrosoftEdgeEnterpriseX64.msi","/quiet","/passive","/l*v $env:windir\log\EdgeInstall.log" -wait -Verb RunAs
+Start-Process "msiexec.exe" -ArgumentList "/i","$env:temp\edgeinstall\MicrosoftEdgeEnterpriseX64.msi","/passive","/l*v $env:windir\logs\EdgeInstall\EdgeInstall.log" -wait -Verb RunAs
 $INSTALLED = Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* |  Select-Object DisplayName, DisplayVersion, Publisher, InstallDate
 $INSTALLED += Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion, Publisher, InstallDate
 $INSTALLED | Where-Object{ $_.DisplayName -match 'edge' } | sort-object -Property DisplayName -Unique | Format-Table -AutoSize
