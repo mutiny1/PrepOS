@@ -1,8 +1,14 @@
+** Client Station **
 Disable Defender
 Disable UAC
 Enable WinRM
+Create local Admin account (if using audit mode on target OS)
+  WU/<password>
 
-
+** Admin Station **
+Set-NetConnectionProfile -NetworkCategory Private
+winrm quickconfig
+Set-Item wsman:\localhost\client\TrustedHosts -Value *
 
 
 * Configure Admin station for remote patching of non-domain template.
