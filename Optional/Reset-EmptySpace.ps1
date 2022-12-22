@@ -1,5 +1,3 @@
-# shamelessly taken from https://github.com/mwrock/packer-templates
-
 $FilePath="c:\zero.tmp"
 $Volume = Get-WmiObject win32_logicaldisk -filter "DeviceID='C:'"
 $ArraySize= 64kb
