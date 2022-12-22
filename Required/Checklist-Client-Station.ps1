@@ -1,6 +1,9 @@
 #################
 # Client Items #
 ################
+# Disable Firewall
+#disable Windows Firewalls
+Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
 # Disable Defender
 Set-MpPreference -DisableRealtimeMonitoring $true -Force
 New-ItemProperty -Path “HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender” -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force
