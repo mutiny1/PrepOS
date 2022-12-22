@@ -1,0 +1,9 @@
+Disable Defender
+Disable UAC
+Enable WinRM
+
+
+
+
+* Configure Admin station for remote patching of non-domain template.
+http://woshub.com/using-psremoting-winrm-non-domain-workgroup/
