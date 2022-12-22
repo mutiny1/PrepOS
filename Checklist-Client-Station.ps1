@@ -18,4 +18,7 @@ winrm set winrm/config/service @{AllowUnencrypted="true"}
 winrm set winrm/config/service/auth @{Basic="true"}
 winrm set winrm/config/client/auth @{Basic="true"}
 winrm set winrm/config/listener?Address=*+Transport=HTTP @{Port="5985"}
+Set-NetConnectionProfile -NetworkCategory Private
+Set-NetFirewallRule -DisplayName "Windows Remote Management (HTTP-In)" -RemoteAddress ANY
+Enable-NetFirewallRule -DisplayName "Windows Remote Management (HTTP-In)"
 Get-Service -Name 'WinRM' | Start-Service
