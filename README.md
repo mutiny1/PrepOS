@@ -1,2 +1,2 @@
 # PrepOS
-Checklist for prepping Client and Admin OS for WinRM for non domain joined machines.
+Checklist for prepping Client and Admin OS for WinRM on non domain joined machines.
