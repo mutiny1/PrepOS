@@ -1,6 +1,4 @@
-# shamelessly taken from https://github.com/mwrock/packer-templates
-
-Write-Host "defragging..."
+Write-Host "Running Defrag"
 if ($null -ne (Get-Command Optimize-Volume -ErrorAction SilentlyContinue)) {
     Optimize-Volume -DriveLetter C
 } else {
